@@ -7,6 +7,9 @@
       "path": "MyApp-DE2"
     },
     {
+      "path": "MyApp-DE.Test"
+    },
+    {
       "path": ".AL-Go"
     }
   ],

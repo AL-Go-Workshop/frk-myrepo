@@ -1,0 +1,44 @@
+{
+  "id": "4d81789b-a83e-4636-84fb-2a2f95cc7b1b",
+  "name": "MyApp-DE.Test",
+  "publisher": "Freddy",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "name": "Library Assert",
+      "version": "22.0.0.0",
+      "publisher": "Microsoft",
+      "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14"
+    },
+    {
+      "name": "Any",
+      "version": "22.0.0.0",
+      "publisher": "Microsoft",
+      "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 51011,
+      "to": 51020
+    }
+  ],
+  "features": [
+    "NoImplicitWith"
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  }
+}
