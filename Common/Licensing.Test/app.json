@@ -1,0 +1,44 @@
+{
+  "id": "9b6dcdb7-47b4-41fb-b525-ae9e835c9505",
+  "name": "Licensing.Test",
+  "publisher": "Freddy",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "version": "22.0.0.0",
+      "name": "Library Assert",
+      "id": "dd0be2ea-f733-4d65-bb34-a28f4624fb14",
+      "publisher": "Microsoft"
+    },
+    {
+      "version": "22.0.0.0",
+      "name": "Any",
+      "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
+      "publisher": "Microsoft"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 99999
+    }
+  ],
+  "features": [
+    "NoImplicitWith"
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  }
+}

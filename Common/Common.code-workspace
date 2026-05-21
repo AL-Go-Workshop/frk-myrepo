@@ -4,6 +4,9 @@
       "path": "Licensing"
     },
     {
+      "path": "Licensing.Test"
+    },
+    {
       "path": ".AL-Go"
     }
   ],
