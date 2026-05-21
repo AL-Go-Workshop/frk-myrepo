@@ -7,10 +7,30 @@
   "doNotPublishApps": true,
   "runs-on": "ubuntu-latest",
   "githubRunner": "ubuntu-latest",
-  "artifact": "///us/weekly",
+  "artifact": "///w1/weekly",
   "doNotSignApps": true,
   "deliverToStorage": {
     "CreateContainerIfNotExist": true
   },
-  "templateSha": "28c060aecd801a24e69346bea0c3cb193f327183"
+  "templateSha": "28c060aecd801a24e69346bea0c3cb193f327183",
+  "conditionalSettings": [
+    {
+      "projects": [
+        "DK"
+      ],
+      "settings": {
+        "country": "dk",
+        "artifact": "///dk/weekly"
+      }
+    },
+    {
+      "projects": [
+        "DE"
+      ],
+      "settings": {
+        "country": "de",
+         "artifact": "///de/weekly"
+      }
+    }
+  ]
 }
