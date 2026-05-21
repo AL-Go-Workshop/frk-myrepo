@@ -4,6 +4,9 @@
       "path": "Licensing"
     },
     {
+      "path": "MyApp.Test"
+    },
+    {
       "path": ".AL-Go"
     }
   ],
