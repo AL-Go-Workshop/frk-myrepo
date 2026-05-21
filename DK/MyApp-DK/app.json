@@ -1,0 +1,44 @@
+{
+  "id": "92a00b2c-aee4-4d43-b385-0166b1ce9eae",
+  "name": "MyApp-DK",
+  "publisher": "Freddy",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "ef9d4362-302c-4132-be96-c300b907465b",
+      "name": "Licensing",
+      "publisher": "Freddy",
+      "version": "1.0.0.0"
+    },
+    {
+      "id": "9b9a0ef8-6995-4a79-b8d7-637d8d3525aa",
+      "name": "MyApp",
+      "publisher": "Freddy",
+      "version": "1.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "22.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50010
+    }
+  ],
+  "features": [
+    "NoImplicitWith"
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  }
+}
