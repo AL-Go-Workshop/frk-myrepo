@@ -1,5 +1,15 @@
 {
   "$schema": "https://raw.githubusercontent.com/microsoft/AL-Go-Actions/v9.0/.Modules/settings.schema.json",
   "type": "PTE",
-  "templateUrl": "https://github.com/microsoft/AL-Go-PTE@main"
+  "templateUrl": "https://github.com/microsoft/AL-Go-PTE@main",
+  "useProjectDependencies": true,
+  "useCompilerFolder": true,
+  "doNotPublishApps": true,
+  "runs-on": "ubuntu-latest",
+  "githubRunner": "ubuntu-latest",
+  "artifact": "///us/weekly",
+  "doNotSignApps": true,
+  "deliverToStorage": {
+    "CreateContainerIfNotExist": true
+  }
 }
