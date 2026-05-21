@@ -22,6 +22,12 @@
       "version": "22.0.0.0",
       "publisher": "Microsoft",
       "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b"
+    },
+    {
+      "id": "99b0ca21-168c-4878-81f6-dfdb44367bb9",
+      "name": "MyApp-DE",
+      "publisher": "Freddy",
+      "version": "1.0.0.0"
     }
   ],
   "screenshots": [],

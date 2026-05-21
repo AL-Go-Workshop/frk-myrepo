@@ -22,6 +22,12 @@
       "name": "Any",
       "id": "e7320ebb-08b3-4406-b1ec-b4927d3e280b",
       "publisher": "Microsoft"
+    },
+    {
+      "id": "ef9d4362-302c-4132-be96-c300b907465b",
+      "name": "Licensing",
+      "publisher": "Freddy",
+      "version": "1.0.0.0"
     }
   ],
   "screenshots": [],

@@ -22,6 +22,12 @@
       "publisher": "Microsoft",
       "version": "22.0.0.0",
       "name": "Any"
+    },
+    {
+      "id": "9b9a0ef8-6995-4a79-b8d7-637d8d3525aa",
+      "name": "MyApp",
+      "publisher": "Freddy",
+      "version": "1.0.0.0"
     }
   ],
   "screenshots": [],
