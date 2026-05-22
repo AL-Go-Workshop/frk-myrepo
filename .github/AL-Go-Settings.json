@@ -17,7 +17,6 @@
     "mode": "modifiedApps",
     "retentionDays": 30
   },
-  
   "fkh": {
     "CreateContainer.cpu": "250m",
     "CreateContainer.memory": "3Gi",
@@ -33,7 +32,6 @@
     "CreateContainer.autostop?": "18:00",
     "StartContainer.autostop?": "18:00"
   },
-  
   "deliverToStorage": {
     "CreateContainerIfNotExist": true
   },
@@ -54,7 +52,7 @@
       ],
       "settings": {
         "country": "de",
-         "artifact": "///de/weekly"
+        "artifact": "///de/weekly"
       }
     },
     {
@@ -70,7 +68,6 @@
           "ignoreProject": true
         }
       }
-    },
-
+    }
   ]
 }

@@ -22,7 +22,7 @@ permissions:
   packages: read
 
 env:
-  workflowDepth: 3
+  workflowDepth: 4
   ALGoOrgSettings: ${{ vars.ALGoOrgSettings }}
   ALGoRepoSettings: ${{ vars.ALGoRepoSettings }}
 
@@ -231,12 +231,37 @@ jobs:
       useArtifactCache: true
       needsContext:  ${{ toJson(needs) }}
 
-  Build:
+  Build3:
     needs: [ Initialization, Build2, Build1 ]
     if: (!failure()) && (!cancelled()) && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && fromJson(needs.Initialization.outputs.buildOrderJson)[2].projectsCount > 0
     strategy:
       matrix:
         include: ${{ fromJson(needs.Initialization.outputs.buildOrderJson)[2].buildDimensions }}
+      fail-fast: false
+    name: Build ${{ matrix.projectName }} (${{ matrix.buildMode }})
+    uses: ./.github/workflows/_BuildALGoProject.yaml
+    secrets: inherit
+    with:
+      shell: ${{ matrix.githubRunnerShell }}
+      runsOn: ${{ matrix.githubRunner }}
+      project: ${{ matrix.project }}
+      projectName: ${{ matrix.projectName }}
+      buildMode: ${{ matrix.buildMode }}
+      skippedProjectsJson: ${{ needs.Initialization.outputs.skippedProjects }}
+      projectDependenciesJson: ${{ needs.Initialization.outputs.projectDependenciesJson }}
+      baselineWorkflowRunId: ${{ needs.Initialization.outputs.baselineWorkflowRunId }}
+      baselineWorkflowSHA: ${{ needs.Initialization.outputs.baselineWorkflowSHA }}
+      secrets: 'licenseFileUrl,codeSignCertificateUrl,*codeSignCertificatePassword,keyVaultCertificateUrl,*keyVaultCertificatePassword,keyVaultClientId,gitHubPackagesContext,applicationInsightsConnectionString'
+      signArtifacts: true
+      useArtifactCache: true
+      needsContext:  ${{ toJson(needs) }}
+
+  Build:
+    needs: [ Initialization, Build3, Build2, Build1 ]
+    if: (!failure()) && (!cancelled()) && (needs.Build3.result == 'success' || needs.Build3.result == 'skipped') && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && fromJson(needs.Initialization.outputs.buildOrderJson)[3].projectsCount > 0
+    strategy:
+      matrix:
+        include: ${{ fromJson(needs.Initialization.outputs.buildOrderJson)[3].buildDimensions }}
       fail-fast: false
     name: Build ${{ matrix.projectName }} (${{ matrix.buildMode }})
     uses: ./.github/workflows/_BuildALGoProject.yaml
@@ -342,8 +367,8 @@ jobs:
         uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
 
   Deploy:
-    needs: [ Initialization, Build2, Build1, Build ]
-    if: (!cancelled()) && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && (needs.Build.result == 'success' || needs.Build.result == 'skipped') && needs.Initialization.outputs.environmentCount > 0
+    needs: [ Initialization, Build3, Build2, Build1, Build ]
+    if: (!cancelled()) && (needs.Build3.result == 'success' || needs.Build3.result == 'skipped') && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && (needs.Build.result == 'success' || needs.Build.result == 'skipped') && needs.Initialization.outputs.environmentCount > 0
     strategy: ${{ fromJson(needs.Initialization.outputs.environmentsMatrixJson) }}
     runs-on: ${{ fromJson(matrix.os) }}
     name: Deploy to ${{ matrix.environment }}
@@ -410,8 +435,8 @@ jobs:
           deploymentEnvironmentsJson: ${{ needs.Initialization.outputs.deploymentEnvironmentsJson }}
 
   Deliver:
-    needs: [ Initialization, Build2, Build1, Build ]
-    if: (!cancelled()) && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && (needs.Build.result == 'success' || needs.Build.result == 'skipped') && needs.Initialization.outputs.deliveryTargetsJson != '[]'
+    needs: [ Initialization, Build3, Build2, Build1, Build ]
+    if: (!cancelled()) && (needs.Build3.result == 'success' || needs.Build3.result == 'skipped') && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && (needs.Build.result == 'success' || needs.Build.result == 'skipped') && needs.Initialization.outputs.deliveryTargetsJson != '[]'
     strategy:
       matrix:
         deliveryTarget: ${{ fromJson(needs.Initialization.outputs.deliveryTargetsJson) }}
@@ -452,7 +477,7 @@ jobs:
           artifacts: '.artifacts'
 
   PostProcess:
-    needs: [ Initialization, Build2, Build1, Build, Deploy, Deliver, DeployALDoc, CodeAnalysisUpload ]
+    needs: [ Initialization, Build3, Build2, Build1, Build, Deploy, Deliver, DeployALDoc, CodeAnalysisUpload ]
     if: (!cancelled())
     runs-on: [ ubuntu-latest ]
     steps:

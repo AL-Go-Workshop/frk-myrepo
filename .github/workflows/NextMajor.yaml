@@ -14,7 +14,7 @@ defaults:
     shell: pwsh
 
 env:
-  workflowDepth: 3
+  workflowDepth: 4
   ALGoOrgSettings: ${{ vars.ALGoOrgSettings }}
   ALGoRepoSettings: ${{ vars.ALGoRepoSettings }}
 
@@ -127,7 +127,7 @@ jobs:
       artifactsNameSuffix: 'NextMajor'
       needsContext:  ${{ toJson(needs) }}
 
-  Build:
+  Build3:
     needs: [ Initialization, Build2, Build1 ]
     if: (!failure()) && (!cancelled()) && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && fromJson(needs.Initialization.outputs.buildOrderJson)[2].projectsCount > 0
     strategy:
@@ -149,8 +149,30 @@ jobs:
       artifactsNameSuffix: 'NextMajor'
       needsContext:  ${{ toJson(needs) }}
 
+  Build:
+    needs: [ Initialization, Build3, Build2, Build1 ]
+    if: (!failure()) && (!cancelled()) && (needs.Build3.result == 'success' || needs.Build3.result == 'skipped') && (needs.Build2.result == 'success' || needs.Build2.result == 'skipped') && (needs.Build1.result == 'success' || needs.Build1.result == 'skipped') && fromJson(needs.Initialization.outputs.buildOrderJson)[3].projectsCount > 0
+    strategy:
+      matrix:
+        include: ${{ fromJson(needs.Initialization.outputs.buildOrderJson)[3].buildDimensions }}
+      fail-fast: false
+    name: Build ${{ matrix.projectName }} (${{ matrix.buildMode }})
+    uses: ./.github/workflows/_BuildALGoProject.yaml
+    secrets: inherit
+    with:
+      shell: ${{ matrix.githubRunnerShell }}
+      runsOn: ${{ matrix.githubRunner }}
+      project: ${{ matrix.project }}
+      projectName: ${{ matrix.projectName }}
+      buildMode: ${{ matrix.buildMode }}
+      projectDependenciesJson: ${{ needs.Initialization.outputs.projectDependenciesJson }}
+      secrets: 'licenseFileUrl,codeSignCertificateUrl,*codeSignCertificatePassword,keyVaultCertificateUrl,*keyVaultCertificatePassword,keyVaultClientId,gitHubPackagesContext,applicationInsightsConnectionString'
+      artifactsRetentionDays: ${{ fromJson(needs.Initialization.outputs.artifactsRetentionDays) }}
+      artifactsNameSuffix: 'NextMajor'
+      needsContext:  ${{ toJson(needs) }}
+
   PostProcess:
-    needs: [ Initialization, Build2, Build1, Build ]
+    needs: [ Initialization, Build3, Build2, Build1, Build ]
     if: always()
     runs-on: [ ubuntu-latest ]
     steps:
