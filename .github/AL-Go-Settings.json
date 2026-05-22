@@ -7,6 +7,7 @@
   "doNotPublishApps": true,
   "runs-on": "ubuntu-latest",
   "githubRunner": "ubuntu-latest",
+  "country": "w1",
   "artifact": "///w1/weekly",
   "doNotSignApps": true,
   "generateDependencyArtifact": true,
@@ -39,7 +40,7 @@
   "conditionalSettings": [
     {
       "projects": [
-        "DK"
+        "*DK"
       ],
       "settings": {
         "country": "dk",
@@ -48,7 +49,7 @@
     },
     {
       "projects": [
-        "DE"
+        "*DE"
       ],
       "settings": {
         "country": "de",
