@@ -2,7 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/microsoft/AL-Go-Actions/v9.0/.Modules/settings.schema.json",
   "type": "PTE",
   "templateUrl": "https://github.com/microsoft/AL-Go-PTE@main",
-
   "useProjectDependencies": true,
   "useCompilerFolder": true,
   "doNotPublishApps": true,
@@ -17,6 +16,22 @@
     "onSchedule": false,
     "mode": "modifiedApps",
     "retentionDays": 30
+  },
+  
+  "fkh": {
+    "CreateContainer.cpu": "250m",
+    "CreateContainer.memory": "3Gi",
+    "CreateContainer.spot": "false",
+    "CreateContainer.moveAllAppsToDevScope": "true",
+    "CreateContainer.multitenant": "false",
+    "CreateContainer.updateLaunchJson": "repo",
+    "CreateContainer.useDatabase": "",
+    "CreateContainer.tenantDatabase": "",
+    "CreateContainer.licenseFileUrl": "",
+    "CreateContainer.authenticationEmail": "",
+    "CreateContainer.startupObjectId": 130451,
+    "CreateContainer.autostop?": "18:00",
+    "StartContainer.autostop?": "18:00"
   },
   
   "deliverToStorage": {
@@ -41,6 +56,21 @@
         "country": "de",
          "artifact": "///de/weekly"
       }
-    }
+    },
+    {
+      "projects": [
+        "Test *"
+      ],
+      "settings": {
+        "gitHubRunner": "windows-latest",
+        "postponeProjectInBuildOrder": true,
+        "doNotPublishApps": false,
+        "useCompilerFolder": false,
+        "fkh": {
+          "ignoreProject": true
+        }
+      }
+    },
+
   ]
 }

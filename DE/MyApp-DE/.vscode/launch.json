@@ -1,5 +1,30 @@
 {
     "version": "0.2.0",
     "configurations": [
+        {
+            "name": "freddydk-de-deployment",
+            "request": "launch",
+            "type": "al",
+            "environmentType": "OnPrem",
+            "server": "https://freddydk-de.swedencentral.cloudapp.azure.com",
+            "serverInstance": "BC",
+            "port": 7049,
+            "authentication": "UserPassword",
+            "tenant": "default",
+            "startupObjectId": 130451,
+            "startupObjectType": "Page",
+            "startupCompany": "",
+            "schemaUpdateMode": "Synchronize",
+            "launchBrowser": true,
+            "usePublicURLFromServer": true,
+            "breakOnError": "All",
+            "breakOnRecordWrite": false,
+            "enableLongRunningSqlStatements": true,
+            "longRunningSqlStatementsThreshold": 500,
+            "numberOfSqlStatements": 10,
+            "enableSqlInformationDebugger": true,
+            "forceUpgrade": false,
+            "dependencyPublishingOption": "Default"
+        }
     ]
 }
