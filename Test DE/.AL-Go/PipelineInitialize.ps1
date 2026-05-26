@@ -13,7 +13,7 @@ $containerName = "$($parts[0])-$($parts[1])-CICD-$($ENV:GITHUB_RUN_ID)".ToLower(
 
 $adminPassword = GetRandomPassword
 $adminUsername = "admin"
-$info = fkh createcontainer --name $containerName --artifactUrl $artifact --adminUsername $adminUsername --adminPassword $adminPassword --useOIDC --asJson | ConvertFrom-Json
+$info = fkh createcontainer --name $containerName --artifactUrl $artifact --adminUsername $adminUsername --adminPassword $adminPassword --autostop 6h --useOIDC --asJson | ConvertFrom-Json
 $bcAuthContext = @{
     "username" = $adminUsername
     "password" = ConvertTo-SecureString -String $adminPassword -AsPlainText -Force
