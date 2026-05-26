@@ -15,7 +15,7 @@ $containerName = "$($parts[0])-$($parts[1])-$($ENV:_project)-$($ENV:_buildMode)-
 
 $adminPassword = GetRandomPassword
 $adminUsername = "admin"
-$result = fkh createcontainer --name $containerName --artifactUrl $artifact --adminUsername $adminUsername --adminPassword $adminPassword --autostop 6h --useOIDC --asJson
+$result = fkh createcontainer --name $containerName --artifactUrl $artifact --adminUsername $adminUsername --adminPassword $adminPassword --autostop 6h --useOIDC --asJson --repo $ENV:REPOSITORY --project $ENV:_project
 Write-Host "Result: $result"
 $info = $result | ConvertFrom-Json
 $bcAuthContext = @{
