@@ -21,5 +21,5 @@ $bcAuthContext = @{
     "password" = ConvertTo-SecureString -String $adminPassword -AsPlainText -Force
 }
 Set-Variable -Name 'bcAuthContext' -value $bcAuthContext -scope 1
-Set-Variable -Name 'environment' -value ($info | ConvertFrom-Json).webclient -scope 1
+Set-Variable -Name 'environment' -value $info.webClient -scope 1
 
