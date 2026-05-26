@@ -2,6 +2,8 @@ Param(
     [Hashtable]$parameters
 )
 
+$parameters | ConvertTo-Json | Out-Host
+
 if ($doNotPublishApps) {
     return
 }
