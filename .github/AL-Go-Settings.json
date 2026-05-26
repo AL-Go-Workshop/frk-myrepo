@@ -8,7 +8,7 @@
   "runs-on": "ubuntu-latest",
   "githubRunner": "ubuntu-latest",
   "country": "w1",
-  "artifact": "///w1/weekly",
+  "artifact": "/sandbox/28.1.49838.50480/w1",
   "doNotSignApps": true,
   "generateDependencyArtifact": true,
   "incrementalBuilds": {
@@ -44,7 +44,7 @@
       ],
       "settings": {
         "country": "dk",
-        "artifact": "///dk/weekly"
+        "artifact": "/sandbox/28.1.49838.50480/dk"
       }
     },
     {
@@ -53,7 +53,7 @@
       ],
       "settings": {
         "country": "de",
-        "artifact": "///de/weekly"
+        "artifact": "/sandbox/28.1.49838.50480/de"
       }
     },
     {
