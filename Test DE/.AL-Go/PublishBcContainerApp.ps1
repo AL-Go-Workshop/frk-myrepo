@@ -13,5 +13,8 @@ $parts = "$ENV:GITHUB_REPOSITORY".Split('/')
 $containerName = "$($parts[0])-$($parts[1])-CICD-$($ENV:GITHUB_RUN_ID)".ToLower()
 
 fkh WaitForContainer --name $containerName --useOIDC
-fkh PublishApp --name $containerName --appFile $parameters.appFile --syncMode $parameters.syncMode --sync --install --useOIDC
+foreach($app in $parameters.appFile) {
+    Write-Host "Publishing $app to $containerName"
+    fkh PublishApp --name $containerName --appFile $app --syncMode ForceSync --sync --install --useOIDC
+}
 
