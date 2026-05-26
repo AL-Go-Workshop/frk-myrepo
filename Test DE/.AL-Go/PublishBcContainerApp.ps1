@@ -10,7 +10,7 @@ Write-Host "PublishBcContainerApp Parameters:"
 $parameters | ConvertTo-Json | Out-Host
 
 $parts = "$ENV:GITHUB_REPOSITORY".Split('/')
-$containerName = "$($parts[0])-$($parts[1])-$($ENV:GITHUB_JOB)-$($ENV:GITHUB_RUN_ID)".ToLower() -replace "[^a-z0-9\-]"
+$containerName = "$($parts[0])-$($parts[1])-$($ENV:_Project)-$($ENV:_buildMode)-$($ENV:GITHUB_RUN_ID)".ToLower() -replace "[^a-z0-9\-]"
 
 Write-Host "Waiting for container $containerName to be ready"
 fkh WaitForContainer --name $containerName --useOIDC
