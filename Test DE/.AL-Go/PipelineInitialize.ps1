@@ -9,7 +9,7 @@ $ENV:FKH_TIMEZONE = "Europe/Copenhagen"
 dotnet tool install -g fkh
 
 $parts = "$ENV:GITHUB_REPOSITORY".Split('/')
-$containerName = "$($parts[0])-$($parts[1])-CICD-$($ENV:GITHUB_RUN_ID)".ToLower()
+$containerName = "$($parts[0])-$($parts[1])-$($ENV:GITHUB_JOB)-$($ENV:GITHUB_RUN_ID)".ToLower() -replace "[^a-z0-9\-]"
 
 $adminPassword = GetRandomPassword
 $adminUsername = "admin"
