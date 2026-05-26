@@ -1,3 +1,8 @@
+if ($doNotPublishApps) {
+    Write-Host "Not publishing apps, skipping pipeline initialization"
+    return
+}
+
 $ENV:FKH_BACKEND_URL = "https://fkh-freddydk-backend.azurewebsites.net/api"
 $ENV:FKH_TIMEZONE = "Europe/Copenhagen"
 
