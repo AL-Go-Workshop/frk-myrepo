@@ -61,10 +61,8 @@
         "Test *"
       ],
       "settings": {
-        "gitHubRunner": "ubuntu-latest",
         "postponeProjectInBuildOrder": true,
         "doNotPublishApps": false,
-        "useCompilerFolder": false,
         "fkh": {
           "ignoreProject": true
         }
