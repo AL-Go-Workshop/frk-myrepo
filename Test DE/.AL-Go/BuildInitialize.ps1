@@ -15,7 +15,7 @@ $ENV:FKH_BACKEND_URL = "https://fkh-freddydk-backend.azurewebsites.net/api"
 $ENV:FKH_TIMEZONE = "Europe/Copenhagen"
 
 Write-Host "Install Freddy's Kubernetes Helper & Business Central Development Tools"
-dotnet tool install -g fkh
+dotnet tool install -g fkh --prerelease
 dotnet tool install -g Microsoft.Dynamics.BusinessCentral.Development.Tools
 
 fkh downloadALGoScripts
