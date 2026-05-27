@@ -1,7 +1,7 @@
 {
-  "$schema": "https://raw.githubusercontent.com/microsoft/AL-Go-Actions/v9.0/.Modules/settings.schema.json",
+  "$schema": "https://raw.githubusercontent.com/freddydk/AL-Go/main/Actions/.Modules/settings.schema.json",
   "type": "PTE",
-  "templateUrl": "https://github.com/microsoft/AL-Go-PTE@main",
+  "templateUrl": "https://github.com/freddydk/AL-Go@main",
   "useProjectDependencies": true,
   "useCompilerFolder": true,
   "doNotPublishApps": true,
@@ -36,7 +36,7 @@
   "deliverToStorage": {
     "CreateContainerIfNotExist": true
   },
-  "templateSha": "28c060aecd801a24e69346bea0c3cb193f327183",
+  "templateSha": "ec5e18214e098ee0a53a996426174f7dfae6d0db",
   "conditionalSettings": [
     {
       "projects": [
