@@ -1,10 +1,12 @@
 Param(
-    [string] $project,
-    [string] $buildMode,
-    [bool] $buildIt
+    [Hashtable] $parameters
 )
 
 # AL-Go Hook
+
+$project = $parameters.project
+$buildMode = $parameters.buildMode
+$buildIt = $parameters.buildIt
 
 if (-not $buildIt) {
     Write-Host "BuildIt is false, no need to remove container"

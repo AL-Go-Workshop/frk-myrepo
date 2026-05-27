@@ -1,10 +1,10 @@
 Param(
-    [string] $project,
-    [string] $buildMode,
-    [bool] $buildIt
+    [Hashtable] $parameters
 )
 
 # AL-Go Hook
+
+$buildIt = $parameters.buildIt
 
 if (-not $buildIt) {
     Write-Host "BuildIt is false, no need to copy fkh scripts"
