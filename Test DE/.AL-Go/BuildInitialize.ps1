@@ -18,4 +18,4 @@ Write-Host "Install Freddy's Kubernetes Helper & Business Central Development To
 dotnet tool install -g fkh --prerelease
 dotnet tool install -g Microsoft.Dynamics.BusinessCentral.Development.Tools
 
-fkh downloadALGoScripts
+fkh downloadALGoScripts --output $PSScriptRoot
